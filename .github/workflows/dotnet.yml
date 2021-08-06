@@ -9,8 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./SampleSolution
+    defaults:
+     run: 
+        working-directory: ./SampleSolution
 
     steps:
     - uses: actions/checkout@v2
@@ -20,16 +21,13 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ${{working-directory}}
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ${{working-directory}}
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      working-directory: ${{working-directory}}
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
         name: Archive
         path: |
-          ${{working-directory}}/bin
+          ./SampleSolution/bin
