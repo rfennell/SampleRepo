@@ -25,4 +25,4 @@ jobs:
       with:
         name: Archive
         path: |
-          ./SampleSolution/bin
+          ./SampleSolution/sample/bin/Debug
