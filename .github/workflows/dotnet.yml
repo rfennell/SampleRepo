@@ -17,9 +17,9 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Build
-      run: dotnet build ./SampleSolution/**/*.csproj
+      run: dotnet build ./SampleSolution/sample/sample.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal ./SampleSolution/sample.unittests/sampleunittests.csproj
+      run: dotnet test --verbosity normal ./SampleSolution/sample.unittests/sampleunittests.csproj
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
